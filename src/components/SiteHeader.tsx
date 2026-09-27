@@ -21,7 +21,7 @@ export default function SiteHeader({
           className="shrink-0"
         >
           <Image
-            src="/logo.png"
+            src="/footer_logo.png"
             alt="Blood Donors of BCIC"
             width={240}
             height={90}
