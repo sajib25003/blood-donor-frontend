@@ -31,7 +31,11 @@ export default function DonorModal({
   onCreated: () => void;
 }) {
   const [form, setForm] = useState<DonorForm>(emptyForm);
-  const [maxDob] = useState(() => new Date().toISOString().slice(0, 10));
+  const [maxDob] = useState(() => {
+    const date = new Date();
+    date.setUTCFullYear(date.getUTCFullYear() - 18);
+    return date.toISOString().slice(0, 10);
+  });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -171,6 +175,7 @@ export default function DonorModal({
           <label className={labelClass}>
             Gender
             <select
+              required
               className={inputClass}
               value={form.sex}
               onChange={(event) =>
