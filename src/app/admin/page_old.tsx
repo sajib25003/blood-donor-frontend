@@ -1,12 +1,13 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { API, GROUPS } from "../../lib/donor";
 import type { BloodGroup, Donor, DonorList } from "../../lib/donor";
 import SiteHeader from "@/components/SiteHeader";
 import Swal from "sweetalert2";
+
 type Detail = Omit<Donor, "age"> & { dob: string };
 type ListState = {
   key: string;
@@ -16,10 +17,11 @@ type ListState = {
 };
 const emptyMeta: DonorList["meta"] = {
   page: 1,
-  limit: 10,
+  limit: 20,
   total: 0,
   totalPages: 0,
 };
+
 function EditDonorModal({
   donor,
   onClose,
@@ -42,6 +44,7 @@ function EditDonorModal({
   const [maxDob] = useState(() => new Date().toISOString().slice(0, 10));
   const inputClass =
     "mt-2 w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100";
+
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSaving(true);
@@ -62,6 +65,7 @@ function EditDonorModal({
       setSaving(false);
     }
   };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/60 p-4"
@@ -134,7 +138,7 @@ function EditDonorModal({
             />
           </label>
           <label className="text-sm font-semibold">
-            Sex
+            Gender
             <select
               className={inputClass}
               value={form.sex}
@@ -198,6 +202,7 @@ function EditDonorModal({
     </div>
   );
 }
+
 export default function AdminPage() {
   const router = useRouter();
   const [auth, setAuth] = useState<"checking" | "ready" | "error">("checking");
@@ -213,12 +218,13 @@ export default function AdminPage() {
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const requestKey = JSON.stringify([
     page,
-    pageSize,
     bloodGroup,
     debouncedSearch,
     refresh,
+    pageSize,
   ]);
   const currentList = listState?.key === requestKey ? listState : null;
+
   useEffect(() => {
     const controller = new AbortController();
     fetch(`${API}/api/v1/auth/me`, {
@@ -235,6 +241,7 @@ export default function AdminPage() {
       });
     return () => controller.abort();
   }, [router]);
+
   useEffect(() => {
     const timer = window.setTimeout(
       () => setDebouncedSearch(search.trim()),
@@ -242,9 +249,11 @@ export default function AdminPage() {
     );
     return () => window.clearTimeout(timer);
   }, [search]);
+
   useEffect(() => {
     if (auth !== "ready") return;
     const controller = new AbortController();
+    // const params = new URLSearchParams({ page: String(page), limit: "5" });
     const params = new URLSearchParams({
       page: String(page),
       limit: String(pageSize),
@@ -278,7 +287,8 @@ export default function AdminPage() {
           });
       });
     return () => controller.abort();
-  }, [auth, page, pageSize, bloodGroup, debouncedSearch, requestKey]);
+  }, [auth, page, bloodGroup, debouncedSearch, requestKey, pageSize]);
+
   const edit = async (id: string) => {
     setActionError("");
     setActionLoading(id);
@@ -302,6 +312,7 @@ export default function AdminPage() {
       setActionLoading(null);
     }
   };
+
   const remove = async (donor: Donor) => {
     const confirmation = await Swal.fire({
       title: "Delete donor?",
@@ -315,22 +326,28 @@ export default function AdminPage() {
       reverseButtons: true,
       focusCancel: true,
     });
+
     if (!confirmation.isConfirmed) return;
+
     setActionError("");
     setActionLoading(donor._id);
+
     try {
       const response = await fetch(`${API}/api/v1/donors/${donor._id}`, {
         method: "DELETE",
         credentials: "include",
       });
+
       if (response.status === 401) {
         router.replace("/admin/login");
         return;
       }
+
       const result = await response.json();
       if (!response.ok) {
         throw new Error(result.message || "Delete failed.");
       }
+
       if (currentList?.data.length === 1 && page > 1) {
         setPage(page - 1);
       } else {
@@ -342,17 +359,22 @@ export default function AdminPage() {
       setActionLoading(null);
     }
   };
+
   const logout = async () => {
     setActionError("");
+
     const response = await fetch(`${API}/api/v1/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
+
     if (!response.ok) {
       throw new Error("Logout failed. Please try again.");
     }
+
     window.location.replace("/");
   };
+
   if (auth === "checking")
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] text-stone-500">
@@ -365,9 +387,11 @@ export default function AdminPage() {
         Unable to contact the server. Refresh this page to try again.
       </main>
     );
+
   const donors = currentList?.data ?? [];
   const meta = currentList?.meta ?? emptyMeta;
   const isLoading = currentList === null || search.trim() !== debouncedSearch;
+
   return (
     <div className="min-h-screen bg-[#faf8f5] text-stone-900">
       {/* <header className="sticky top-0 z-40 border-b border-stone-200 bg-white shadow-sm">
@@ -395,12 +419,6 @@ export default function AdminPage() {
         <p className="mt-2 text-sm text-stone-500">
           Update registered information or remove a donor.
         </p>
-        <Link
-          href="/admin/requests"
-          className="mt-5 inline-flex rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-700 transition hover:bg-red-100"
-        >
-          View update requests →
-        </Link>
         <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 sm:flex-row sm:p-5">
           <label className="flex-1">
             <span className="sr-only">Search by name or mobile</span>
@@ -433,17 +451,17 @@ export default function AdminPage() {
               ))}
             </select>
           </label>
-          <label className="flex items-center gap-2 text-sm font-medium text-stone-600">
-            <span className="whitespace-nowrap">Per page</span>
+          <label className="flex items-center gap-2 text-sm">
+            Per page
             <select
               value={pageSize}
               onChange={(event) => {
                 setPageSize(Number(event.target.value));
                 setPage(1);
               }}
-              className="rounded-xl border border-stone-200 bg-white px-3 py-3 text-sm outline-none focus:border-red-500"
+              className="rounded-xl border border-stone-200 bg-white px-3 py-3"
             >
-              {[10, 20, 50, 100].map((size) => (
+              {[5, 10, 20, 50, 100].map((size) => (
                 <option key={size} value={size}>
                   {size}
                 </option>
@@ -491,7 +509,9 @@ export default function AdminPage() {
                     <span className="font-semibold">{donor.name}</span>
                   </div>
                   <p className="mt-2 text-sm text-stone-500">
-                    {donor.mobileNo} · {donor.currentLocation}
+                    {donor.age} yrs .{" "}
+                    <span className="capitalize">{donor.sex}</span> .{" "}
+                    {donor.mobileNo} . {donor.currentLocation}
                   </p>
                 </div>
                 <div className="flex gap-2">

@@ -106,6 +106,16 @@ export default function SiteHeader({
           )}
 
           {(onSignOut || signedIn) && (
+            <Link
+              href="/admin"
+              aria-current={pathname === "/admin" ? "page" : undefined}
+              className="rounded-xl border border-red-200 bg-red-50 px-3 py-2.5 text-sm font-semibold text-red-700 transition hover:bg-red-100 sm:px-4"
+            >
+              Admin
+            </Link>
+          )}
+
+          {(onSignOut || signedIn) && (
             <button
               type="button"
               onClick={signOut}

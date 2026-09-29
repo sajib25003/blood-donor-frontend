@@ -8,6 +8,7 @@ import DonorStats from "../components/donors/DonorStats";
 import DonorCard from "../components/donors/DonorCard";
 import { API, GROUPS } from "../lib/donor";
 import type { BloodGroup, Donor, DonorList, Stats } from "../lib/donor";
+import UpdateRequest from "@/components/UpdateRequest";
 
 type ListState = {
   key: string;
@@ -216,6 +217,10 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <UpdateRequest
+          supportEmail={process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? ""}
+        />
 
         <DonorStats
           stats={stats}
