@@ -42,23 +42,23 @@ export default function SiteFooter() {
   return (
     <footer className="border-t border-stone-200 bg-[#faf8f5] px-5 py-10 text-stone-600 sm:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col items-start justify-between gap-4 border-b border-stone-200 pb-8 sm:flex-row sm:items-center">
+        <div className="flex items-center justify-between gap-3 border-b border-stone-200 pb-8">
           <Link
             href="/"
             aria-label="Blood Donors of BCIC — Home"
-            className="inline-flex shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
+            className="inline-flex min-w-0 flex-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
           >
             <Image
               src="/footer_logo.png"
               alt="Blood Donors of BCIC — Connecting people when it matters."
               width={1921}
               height={819}
-              className="h-auto w-[280px] max-w-full object-contain sm:w-[340px]"
+              className="h-auto w-[220px] max-w-full object-contain sm:w-[340px]"
             />
           </Link>
 
           {isLoggedIn === false && (
-            <div className="group relative self-end sm:self-auto">
+            <div className="group relative shrink-0">
               <Link
                 href="/admin/login"
                 aria-label="Admin Login"
@@ -79,8 +79,9 @@ export default function SiteFooter() {
                   <circle cx="12" cy="15.5" r="1" />
                 </svg>
               </Link>
+
               <span
-                role="tooltip"
+                aria-hidden="true"
                 className="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
               >
                 Admin Login
@@ -94,6 +95,7 @@ export default function SiteFooter() {
             © <span suppressHydrationWarning>{year}</span> Blood Donors of BCIC.
             All Rights Reserved.
           </p>
+
           <p>
             Developed &amp; Maintained by{" "}
             <a
