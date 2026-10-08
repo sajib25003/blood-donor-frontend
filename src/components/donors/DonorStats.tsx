@@ -43,12 +43,13 @@ export default function DonorStats({
         {GROUPS.map((group) => (
           <button
             key={group}
+            type="button"
             onClick={() => onSelectGroup(selectedGroup === group ? "" : group)}
             aria-pressed={selectedGroup === group}
-            className={`rounded-xl sm:rounded-2xl border p-2.5 sm:p-4 text-left transition hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${selectedGroup === group ? "border-red-700 bg-red-700 text-white" : "border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] text-stone-900 dark:text-stone-100"}`}
+            className={`rounded-xl sm:rounded-2xl border p-2.5 sm:p-4 text-left transition duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${selectedGroup === group ? "border-red-300 bg-red-100 text-red-900 hover:bg-red-200 dark:border-red-900 dark:bg-[#3b242b] dark:text-red-200 dark:hover:bg-[#482b33]" : "border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] text-stone-900 dark:text-stone-100 hover:border-red-200 hover:bg-red-50 dark:hover:border-red-900 dark:hover:bg-[#2b2024]"}`}
           >
             <span
-              className={`text-[10px] sm:text-xs font-semibold ${selectedGroup === group ? "text-red-100" : "text-stone-500 dark:text-stone-400"}`}
+              className={`text-[10px] sm:text-xs font-semibold ${selectedGroup === group ? "text-red-700 dark:text-red-300" : "text-stone-500 dark:text-stone-400"}`}
             >
               Blood group
             </span>
@@ -56,7 +57,7 @@ export default function DonorStats({
               {group}
             </span>
             <span
-              className={`mt-1 block text-xs sm:mt-2 sm:text-sm ${selectedGroup === group ? "text-red-100" : "text-stone-500 dark:text-stone-400"}`}
+              className={`mt-1 block text-xs sm:mt-2 sm:text-sm ${selectedGroup === group ? "text-red-700 dark:text-red-300" : "text-stone-500 dark:text-stone-400"}`}
             >
               {stats ? (stats.byBloodGroup[group] ?? 0) : "–"} donors
             </span>
