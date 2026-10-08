@@ -81,13 +81,13 @@ export default function SiteHeader({
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 sm:px-8">
         <Link
           href="/"
-          aria-label="Blood Donors of BCIC — Home"
+          aria-label="Bangladeshi Blood Donors — Home"
           className="shrink-0"
         >
           <Image
             src="/footer_logo.png"
-            alt="Blood Donors of BCIC"
-            width={1921}
+            alt="Bangladeshi Blood Donors"
+            width={1920}
             height={819}
             priority
             className="h-auto w-[150px] object-contain sm:w-[210px]"

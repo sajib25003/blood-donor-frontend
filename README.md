@@ -1,3 +1,9 @@
+# Bangladeshi Blood Donors
+
+A public blood donor directory for Bangladesh.
+
+The header and footer both use the same transparent logo: `public/footer_logo.png`. Keep this as the single wordmark asset; the favicon uses the matching blood-drop emblem.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

@@ -14,17 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Blood Donors of BCIC",
-    template: "%s | Blood Donors of BCIC",
+    default: "Bangladeshi Blood Donors",
+    template: "%s | Bangladeshi Blood Donors",
   },
   description:
-    "Find blood donors by blood group, name or mobile number and register as a donor in the BCIC donor directory.",
-  applicationName: "Blood Donors of BCIC",
+    "Find blood donors by blood group, name or mobile number and register as a donor in the Bangladesh donor directory.",
+  applicationName: "Bangladeshi Blood Donors",
   openGraph: {
-    title: "Blood Donors of BCIC",
+    title: "Bangladeshi Blood Donors",
     description:
-      "Find a blood donor or join the BCIC donor directory to help others when it matters.",
-    siteName: "Blood Donors of BCIC",
+      "Find a blood donor or join the Bangladesh donor directory to help others when it matters.",
+    siteName: "Bangladeshi Blood Donors",
     locale: "en_BD",
     type: "website",
   },

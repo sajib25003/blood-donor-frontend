@@ -373,7 +373,7 @@ export default function AdminPage() {
       {/* <header className="sticky top-0 z-40 border-b border-stone-200 bg-white shadow-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
           <Link href="/" className="font-bold text-red-800">
-            ✚ Blood Donor Network
+            ✚ Bangladeshi Blood Donors
           </Link>
           <button
             type="button"

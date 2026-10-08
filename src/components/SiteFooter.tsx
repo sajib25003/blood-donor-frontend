@@ -45,13 +45,13 @@ export default function SiteFooter() {
         <div className="flex items-center justify-between gap-3 border-b border-stone-200 pb-8">
           <Link
             href="/"
-            aria-label="Blood Donors of BCIC — Home"
+            aria-label="Bangladeshi Blood Donors — Home"
             className="inline-flex min-w-0 flex-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
           >
             <Image
               src="/footer_logo.png"
-              alt="Blood Donors of BCIC — Connecting people when it matters."
-              width={1921}
+              alt="Bangladeshi Blood Donors — Connecting people when it matters."
+              width={1920}
               height={819}
               className="h-auto w-[220px] max-w-full object-contain sm:w-[340px]"
             />
@@ -92,7 +92,7 @@ export default function SiteFooter() {
 
         <div className="flex flex-col gap-3 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
           <p>
-            © <span suppressHydrationWarning>{year}</span> Blood Donors of BCIC.
+            © <span suppressHydrationWarning>{year}</span> Bangladeshi Blood Donors.
             All Rights Reserved.
           </p>
 
