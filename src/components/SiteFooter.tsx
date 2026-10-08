@@ -99,7 +99,7 @@ export default function SiteFooter() {
           <p>
             Developed &amp; Maintained by{" "}
             <a
-              href="https://ashikhassan.vercel.app/"
+              href="https://www.ashikhassanbhuiyan.site/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-bold text-red-700 dark:text-red-300 underline decoration-red-200 underline-offset-4 transition hover:text-red-900 dark:hover:text-red-200 hover:decoration-red-700"
