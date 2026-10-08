@@ -181,7 +181,7 @@ export default function HomePage() {
       <SiteHeader onBecomeDonor={() => setShowForm(true)} />
 
       <main>
-        <section className="relative overflow-hidden bg-[#741c21] text-white">
+        <section className="relative overflow-hidden bg-[var(--brand-surface)] text-white">
           <div
             aria-hidden="true"
             className="absolute -right-32 -top-64 h-[36rem] w-[36rem] rounded-full border-[100px] border-white/5"
