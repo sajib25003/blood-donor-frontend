@@ -40,9 +40,9 @@ export default function SiteFooter() {
   }, [pathname]);
 
   return (
-    <footer className="border-t border-stone-200 bg-[#faf8f5] px-5 py-10 text-stone-600 sm:px-8">
+    <footer className="border-t border-stone-200 bg-[#faf8f5] px-4 py-6 sm:py-10 text-stone-600 sm:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between gap-3 border-b border-stone-200 pb-8">
+        <div className="flex items-center justify-between gap-3 border-b border-stone-200 pb-5 sm:pb-8">
           <Link
             href="/"
             aria-label="Bangladeshi Blood Donors — Home"
@@ -53,7 +53,7 @@ export default function SiteFooter() {
               alt="Bangladeshi Blood Donors — Connecting people when it matters."
               width={1920}
               height={819}
-              className="h-auto w-[220px] max-w-full object-contain sm:w-[340px]"
+              className="h-auto w-[200px] max-w-full object-contain sm:w-[340px]"
             />
           </Link>
 
@@ -90,7 +90,7 @@ export default function SiteFooter() {
           )}
         </div>
 
-        <div className="flex flex-col gap-3 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
+        <div className="flex flex-col gap-2 pt-4 sm:gap-3 sm:pt-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
           <p>
             © <span suppressHydrationWarning>{year}</span> Bangladeshi Blood Donors.
             All Rights Reserved.

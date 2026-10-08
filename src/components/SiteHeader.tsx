@@ -78,7 +78,7 @@ export default function SiteHeader({
 
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 sm:px-8">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:gap-3 sm:py-4 sm:px-8">
         <Link
           href="/"
           aria-label="Bangladeshi Blood Donors — Home"
@@ -90,7 +90,7 @@ export default function SiteHeader({
             width={1920}
             height={819}
             priority
-            className="h-auto w-[150px] object-contain sm:w-[210px]"
+            className="h-auto w-[130px] object-contain sm:w-[210px]"
           />
         </Link>
 
@@ -99,7 +99,7 @@ export default function SiteHeader({
             <button
               type="button"
               onClick={onBecomeDonor}
-              className="rounded-xl bg-red-700 px-3 py-2.5 text-sm font-semibold text-white hover:cursor-pointer transition hover:bg-red-800 sm:px-5"
+              className="rounded-xl bg-red-700 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold text-white hover:cursor-pointer transition hover:bg-red-800 sm:px-5"
             >
               Become a donor
             </button>
@@ -109,7 +109,7 @@ export default function SiteHeader({
             <Link
               href="/admin"
               aria-current={pathname === "/admin" ? "page" : undefined}
-              className="rounded-xl border border-red-200 bg-red-50 px-3 py-2.5 text-sm font-semibold text-red-700 transition hover:bg-red-100 sm:px-4"
+              className="rounded-xl border border-red-200 bg-red-50 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold text-red-700 transition hover:bg-red-100 sm:px-4"
             >
               Admin
             </Link>
@@ -120,7 +120,7 @@ export default function SiteHeader({
               type="button"
               onClick={signOut}
               disabled={signingOut}
-              className="rounded-xl border border-stone-300 hover:cursor-pointer hover:bg-stone-200 px-3 py-2.5 text-sm font-semibold transition disabled:opacity-60 sm:px-4"
+              className="rounded-xl border border-stone-300 hover:cursor-pointer hover:bg-stone-200 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold transition disabled:opacity-60 sm:px-4"
             >
               {signingOut ? "Signing out…" : "Sign out"}
             </button>

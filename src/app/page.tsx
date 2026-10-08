@@ -6,6 +6,7 @@ import SiteFooter from "../components/SiteFooter";
 import DonorModal from "../components/donors/DonorModal";
 import DonorStats from "../components/donors/DonorStats";
 import DonorCard from "../components/donors/DonorCard";
+import DonorSkeleton from "../components/donors/DonorSkeleton";
 import { API, GROUPS } from "../lib/donor";
 import type { BloodGroup, Donor, DonorList, Stats } from "../lib/donor";
 import UpdateRequest from "@/components/UpdateRequest";
@@ -186,24 +187,24 @@ export default function HomePage() {
             className="absolute -right-32 -top-64 h-[36rem] w-[36rem] rounded-full border-[100px] border-white/5"
           />
 
-          <div className="relative mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20">
+          <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-8 sm:py-20">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-red-200">
               A community ready to help
             </p>
 
-            <h1 className="mt-5 max-w-2xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+            <h1 className="mt-4 max-w-2xl text-3xl font-bold leading-tight tracking-tight sm:text-6xl">
               The right donor can make all the difference.
             </h1>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-red-100 sm:text-lg">
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-red-100 sm:text-lg">
               Search by blood group, name or phone number and connect directly
               with a registered donor.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
               <a
                 href="#find-donors"
-                className="rounded-xl bg-white px-6 py-3 font-bold text-red-800 transition hover:bg-red-50"
+                className="rounded-xl bg-white px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base font-bold text-red-800 transition hover:bg-red-50"
               >
                 Find a donor
               </a>
@@ -231,7 +232,7 @@ export default function HomePage() {
 
         <section
           id="find-donors"
-          className="mx-auto max-w-7xl scroll-mt-24 px-5 py-12 sm:px-8 sm:py-16"
+          className="mx-auto max-w-7xl scroll-mt-24 px-4 py-8 sm:px-8 sm:py-16"
         >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -239,7 +240,7 @@ export default function HomePage() {
                 Donor directory
               </p>
 
-              <h2 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
+              <h2 className="mt-1 text-xl font-bold tracking-tight sm:text-3xl">
                 Find someone nearby
               </h2>
             </div>
@@ -251,7 +252,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:p-5">
+          <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-3 sm:mt-6 shadow-sm sm:flex-row sm:items-center sm:p-5">
             <label className="relative flex-1">
               <span className="sr-only">Search by name or mobile number</span>
 
@@ -330,25 +331,57 @@ export default function HomePage() {
           )}
 
           {isSearching && !error && (
-            <p role="status" className="py-16 text-center text-stone-500">
-              Searching donors…
-            </p>
+            <div
+              role="status"
+              aria-label="Searching donors"
+              className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+            >
+              <span className="sr-only">Searching donors…</span>
+              {Array.from({ length: 6 }, (_, index) => (
+                <DonorSkeleton key={index} />
+              ))}
+            </div>
           )}
 
           {!isSearching && !error && donors.length === 0 && (
-            <div className="mt-6 rounded-2xl border border-dashed border-stone-300 bg-white p-14 text-center">
+            <div className="mt-6 rounded-2xl border border-dashed border-stone-300 bg-white px-5 py-10 text-center sm:p-14">
+              <span
+                aria-hidden="true"
+                className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-700"
+              >
+                <SearchIcon />
+              </span>
               <p className="text-xl font-bold">No donors found</p>
 
               <p className="mt-2 text-sm text-stone-500">
-                Try another name or blood group, or be the first to register.
+                Try another name, mobile number or blood group.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  if (search || bloodGroup) {
+                    chooseGroup("");
+                    changeSearch("");
+                  } else {
+                    setShowForm(true);
+                  }
+                }}
+                className="mt-5 rounded-xl bg-red-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
+              >
+                {search || bloodGroup ? "Clear filters" : "Become a donor"}
+              </button>
             </div>
           )}
 
           {!isSearching && donors.length > 0 && (
             <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {donors.map((donor) => (
-                <DonorCard key={donor._id} donor={donor} />
+                <div
+                  key={donor._id}
+                  className="donor-enter flex [&>article]:w-full"
+                >
+                  <DonorCard donor={donor} />
+                </div>
               ))}
             </div>
           )}

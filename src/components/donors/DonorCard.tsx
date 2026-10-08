@@ -23,10 +23,10 @@ export default function DonorCard({ donor }: { donor: Donor }) {
     "pointer-events-none absolute bottom-full z-10 mb-2 whitespace-nowrap rounded-lg bg-stone-900 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-within:opacity-100";
 
   return (
-    <article className="flex flex-col rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-red-200 hover:bg-red-50 hover:shadow-md">
+    <article className="flex flex-col rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-red-200 hover:bg-red-50 hover:shadow-md">
       <div className="flex items-start justify-between gap-4">
         <div
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-stone-200 bg-stone-100 text-lg font-bold text-stone-700"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-stone-200 bg-stone-100 text-lg font-bold text-stone-700"
           aria-hidden="true"
         >
           {donor.name.charAt(0).toUpperCase()}
@@ -37,16 +37,16 @@ export default function DonorCard({ donor }: { donor: Donor }) {
         </span>
       </div>
 
-      <h3 className="mt-5 text-xl font-bold tracking-tight">{donor.name}</h3>
+      <h3 className="mt-4 text-lg sm:mt-5 sm:text-xl font-bold tracking-tight">{donor.name}</h3>
 
       <p className="mt-1 text-sm capitalize text-stone-500">
         {donor.age} years old · {donor.sex}
       </p>
 
-      <p className="mt-4 text-sm text-stone-600">📍 {donor.currentLocation}</p>
+      <p className="mt-3 text-xs sm:mt-4 sm:text-sm text-stone-600">📍 {donor.currentLocation}</p>
 
-      <div className="mt-auto pt-6">
-        <div className="flex items-center justify-between rounded-xl border border-stone-200 bg-stone-50 px-4 py-3">
+      <div className="mt-auto pt-4 sm:pt-6">
+        <div className="flex items-center justify-between rounded-xl border border-stone-200 bg-stone-50 px-3 py-2.5 sm:px-4 sm:py-3">
           <span className="text-xs font-medium text-stone-500">
             Mobile number
           </span>
@@ -70,7 +70,7 @@ export default function DonorCard({ donor }: { donor: Donor }) {
                   : `View ${donor.name}'s number`
               }
               aria-pressed={showNumber}
-              className="flex h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-stone-50 text-stone-600 transition hover:border-stone-300 hover:bg-stone-100 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-600"
+              className="flex h-11 sm:h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-stone-200 bg-stone-50 text-stone-600 transition hover:border-stone-300 hover:bg-stone-100 hover:text-stone-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-600"
             >
               {showNumber ? (
                 <FaEyeSlash className="h-5 w-5" aria-hidden="true" />
@@ -90,7 +90,7 @@ export default function DonorCard({ donor }: { donor: Donor }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Message ${donor.name} on WhatsApp`}
-              className="flex h-12 w-full items-center justify-center rounded-xl border border-green-200 bg-green-50 text-green-700 transition hover:border-green-300 hover:bg-green-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
+              className="flex h-11 sm:h-12 w-full items-center justify-center rounded-xl border border-green-200 bg-green-50 text-green-700 transition hover:border-green-300 hover:bg-green-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700"
             >
               <FaWhatsapp className="h-6 w-6" aria-hidden="true" />
             </a>
@@ -107,7 +107,7 @@ export default function DonorCard({ donor }: { donor: Donor }) {
             <a
               href={`tel:${donor.mobileNo}`}
               aria-label={`Call ${donor.name}`}
-              className="flex h-12 w-full items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+              className="flex h-11 sm:h-12 w-full items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
             >
               <FaPhone className="h-5 w-5" aria-hidden="true" />
             </a>

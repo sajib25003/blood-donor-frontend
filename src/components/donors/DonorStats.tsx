@@ -17,7 +17,7 @@ export default function DonorStats({
   return (
     <section
       aria-labelledby="stats-title"
-      className="mx-auto max-w-7xl px-5 pt-12 sm:px-8"
+      className="mx-auto max-w-7xl px-4 pt-8 sm:pt-12 sm:px-8"
     >
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
@@ -26,7 +26,7 @@ export default function DonorStats({
           </p>
           <h2
             id="stats-title"
-            className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl"
+            className="mt-1 text-xl font-bold tracking-tight sm:text-3xl"
           >
             Donors by blood group
           </h2>
@@ -39,22 +39,24 @@ export default function DonorStats({
               : "Loading counts…"}
         </p>
       </div>
-      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+      <div className="mt-4 grid grid-cols-4 gap-2 sm:mt-6 sm:gap-3 sm:grid-cols-4 lg:grid-cols-8">
         {GROUPS.map((group) => (
           <button
             key={group}
             onClick={() => onSelectGroup(selectedGroup === group ? "" : group)}
             aria-pressed={selectedGroup === group}
-            className={`rounded-2xl border p-4 text-left transition hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${selectedGroup === group ? "border-red-700 bg-red-700 text-white" : "border-stone-200 bg-white text-stone-900"}`}
+            className={`rounded-xl sm:rounded-2xl border p-2.5 sm:p-4 text-left transition hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-md ${selectedGroup === group ? "border-red-700 bg-red-700 text-white" : "border-stone-200 bg-white text-stone-900"}`}
           >
             <span
-              className={`text-xs font-semibold ${selectedGroup === group ? "text-red-100" : "text-stone-500"}`}
+              className={`text-[10px] sm:text-xs font-semibold ${selectedGroup === group ? "text-red-100" : "text-stone-500"}`}
             >
               Blood group
             </span>
-            <span className="mt-3 block text-2xl font-extrabold">{group}</span>
+            <span className="mt-2 block text-xl sm:mt-3 sm:text-2xl font-extrabold">
+              {group}
+            </span>
             <span
-              className={`mt-2 block text-sm ${selectedGroup === group ? "text-red-100" : "text-stone-500"}`}
+              className={`mt-1 block text-xs sm:mt-2 sm:text-sm ${selectedGroup === group ? "text-red-100" : "text-stone-500"}`}
             >
               {stats ? (stats.byBloodGroup[group] ?? 0) : "–"} donors
             </span>
