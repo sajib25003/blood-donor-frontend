@@ -98,7 +98,7 @@ export default function UpdateRequest({
 
   return (
     <section className="border-b border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 sm:px-8 sm:py-5">
-      <div className="mx-auto text-center max-w-7xl rounded-2xl border border-red-100 dark:border-red-900 bg-red-50/70 dark:bg-red-950/30 px-3 py-3 text-xs leading-relaxed text-stone-700 dark:text-stone-300 sm:px-6 sm:py-4 sm:text-sm">
+      <div className="mx-auto text-center max-w-7xl rounded-2xl border border-stone-200 dark:border-white/20 bg-stone-50 dark:bg-white/10 px-3 py-3 text-xs leading-relaxed text-stone-700 dark:text-stone-300 sm:px-6 sm:py-4 sm:text-sm">
         If you want to update your info, please leave a request{" "}
         <button
           ref={openButton}
