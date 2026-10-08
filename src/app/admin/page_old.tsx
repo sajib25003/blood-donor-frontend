@@ -43,7 +43,7 @@ function EditDonorModal({
   const [error, setError] = useState("");
   const [maxDob] = useState(() => new Date().toISOString().slice(0, 10));
   const inputClass =
-    "mt-2 w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100";
+    "mt-2 w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950";
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -77,11 +77,11 @@ function EditDonorModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="edit-donor-title"
-        className="max-h-[92dvh] w-full max-w-xl overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:p-8"
+        className="max-h-[92dvh] w-full max-w-xl overflow-y-auto overscroll-contain rounded-3xl bg-white dark:bg-[#202024] p-6 shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:p-8"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700 dark:text-red-300">
               Admin
             </p>
             <h2 id="edit-donor-title" className="mt-2 text-2xl font-bold">
@@ -92,7 +92,7 @@ function EditDonorModal({
             type="button"
             onClick={onClose}
             aria-label="Close form"
-            className="rounded-full p-2 text-stone-500 hover:bg-stone-100"
+            className="rounded-full p-2 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"
           >
             ✕
           </button>
@@ -185,7 +185,7 @@ function EditDonorModal({
           {error && (
             <p
               role="alert"
-              className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 sm:col-span-2"
+              className="rounded-xl bg-red-50 dark:bg-red-950/40 px-4 py-3 text-sm text-red-700 dark:text-red-300 sm:col-span-2"
             >
               {error}
             </p>
@@ -377,13 +377,13 @@ export default function AdminPage() {
 
   if (auth === "checking")
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] text-stone-500">
+      <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] dark:bg-[#141416] text-stone-500 dark:text-stone-400">
         Checking admin session…
       </main>
     );
   if (auth === "error")
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] p-6 text-center text-stone-700">
+      <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] dark:bg-[#141416] p-6 text-center text-stone-700 dark:text-stone-300">
         Unable to contact the server. Refresh this page to try again.
       </main>
     );
@@ -393,16 +393,16 @@ export default function AdminPage() {
   const isLoading = currentList === null || search.trim() !== debouncedSearch;
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-stone-900">
-      {/* <header className="sticky top-0 z-40 border-b border-stone-200 bg-white shadow-sm">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#141416] text-stone-900 dark:text-stone-100">
+      {/* <header className="sticky top-0 z-40 border-b border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] shadow-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5 sm:px-8">
-          <Link href="/" className="font-bold text-red-800">
+          <Link href="/" className="font-bold text-red-800 dark:text-red-200">
             ✚ Bangladeshi Blood Donors
           </Link>
           <button
             type="button"
             onClick={logout}
-            className="rounded-xl border border-stone-300 px-4 py-2 text-sm font-semibold hover:bg-stone-50"
+            className="rounded-xl border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm font-semibold hover:bg-stone-50 dark:hover:bg-stone-900"
           >
             Sign out
           </button>
@@ -410,16 +410,16 @@ export default function AdminPage() {
       </header> */}
       <SiteHeader onSignOut={logout} />
       <main className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700 dark:text-red-300">
           Administration
         </p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">
           Manage donors
         </h1>
-        <p className="mt-2 text-sm text-stone-500">
+        <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
           Update registered information or remove a donor.
         </p>
-        <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-4 sm:flex-row sm:p-5">
+        <div className="mt-8 flex flex-col gap-3 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] p-4 sm:flex-row sm:p-5">
           <label className="flex-1">
             <span className="sr-only">Search by name or mobile</span>
             <input
@@ -430,7 +430,7 @@ export default function AdminPage() {
                 setPage(1);
               }}
               placeholder="Search name or mobile number"
-              className="w-full rounded-xl border border-stone-200 px-4 py-3 text-sm outline-none focus:border-red-500"
+              className="w-full rounded-xl border border-stone-200 dark:border-stone-700 px-4 py-3 text-sm outline-none focus:border-red-500"
             />
           </label>
           <label className="sm:w-48">
@@ -441,7 +441,7 @@ export default function AdminPage() {
                 setBloodGroup(event.target.value as BloodGroup | "");
                 setPage(1);
               }}
-              className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm outline-none focus:border-red-500"
+              className="w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 text-sm outline-none focus:border-red-500"
             >
               <option value="">All blood groups</option>
               {GROUPS.map((group) => (
@@ -459,7 +459,7 @@ export default function AdminPage() {
                 setPageSize(Number(event.target.value));
                 setPage(1);
               }}
-              className="rounded-xl border border-stone-200 bg-white px-3 py-3"
+              className="rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-3 py-3"
             >
               {[5, 10, 20, 50, 100].map((size) => (
                 <option key={size} value={size}>
@@ -472,27 +472,27 @@ export default function AdminPage() {
         {actionError && (
           <p
             role="alert"
-            className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-700"
+            className="mt-5 rounded-xl bg-red-50 dark:bg-red-950/40 p-4 text-sm text-red-700 dark:text-red-300"
           >
             {actionError}
           </p>
         )}
-        <div className="mt-6 overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-          <div className="border-b border-stone-100 px-5 py-4 text-sm text-stone-500">
+        <div className="mt-6 overflow-hidden rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] shadow-sm">
+          <div className="border-b border-stone-100 px-5 py-4 text-sm text-stone-500 dark:text-stone-400">
             {isLoading ? "Loading donors…" : `${meta.total} donors found`}
           </div>
           {currentList?.error && (
-            <p role="alert" className="p-5 text-red-700">
+            <p role="alert" className="p-5 text-red-700 dark:text-red-300">
               {currentList.error}
             </p>
           )}
           {isLoading && (
-            <p role="status" className="p-8 text-center text-stone-500">
+            <p role="status" className="p-8 text-center text-stone-500 dark:text-stone-400">
               Loading…
             </p>
           )}
           {!isLoading && !currentList?.error && donors.length === 0 && (
-            <p className="p-8 text-center text-stone-500">No donors found.</p>
+            <p className="p-8 text-center text-stone-500 dark:text-stone-400">No donors found.</p>
           )}
           {!isLoading &&
             !currentList?.error &&
@@ -503,12 +503,12 @@ export default function AdminPage() {
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-3">
-                    <span className="rounded-lg bg-red-50 px-2 py-1 font-bold text-red-800">
+                    <span className="rounded-lg bg-red-50 dark:bg-red-950/40 px-2 py-1 font-bold text-red-800 dark:text-red-200">
                       {donor.bloodGroup}
                     </span>
                     <span className="font-semibold">{donor.name}</span>
                   </div>
-                  <p className="mt-2 text-sm text-stone-500">
+                  <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
                     {donor.age} yrs .{" "}
                     <span className="capitalize">{donor.sex}</span> .{" "}
                     {donor.mobileNo} . {donor.currentLocation}
@@ -519,7 +519,7 @@ export default function AdminPage() {
                     type="button"
                     disabled={actionLoading === donor._id}
                     onClick={() => edit(donor._id)}
-                    className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-semibold hover:bg-stone-50 disabled:opacity-50"
+                    className="rounded-lg border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm font-semibold hover:bg-stone-50 dark:hover:bg-stone-900 disabled:opacity-50"
                   >
                     Edit
                   </button>
@@ -527,7 +527,7 @@ export default function AdminPage() {
                     type="button"
                     disabled={actionLoading === donor._id}
                     onClick={() => remove(donor)}
-                    className="rounded-lg border border-red-200 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:opacity-50"
+                    className="rounded-lg border border-red-200 dark:border-red-900 px-4 py-2 text-sm font-semibold text-red-700 dark:text-red-300 hover:bg-red-50 dark:hover:bg-red-950/40 disabled:opacity-50"
                   >
                     Delete
                   </button>
@@ -543,7 +543,7 @@ export default function AdminPage() {
             <button
               disabled={page <= 1}
               onClick={() => setPage(page - 1)}
-              className="rounded-lg border border-stone-300 px-4 py-2 text-sm disabled:opacity-40"
+              className="rounded-lg border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm disabled:opacity-40"
             >
               Previous
             </button>
@@ -553,7 +553,7 @@ export default function AdminPage() {
             <button
               disabled={page >= meta.totalPages}
               onClick={() => setPage(page + 1)}
-              className="rounded-lg border border-stone-300 px-4 py-2 text-sm disabled:opacity-40"
+              className="rounded-lg border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm disabled:opacity-40"
             >
               Next
             </button>

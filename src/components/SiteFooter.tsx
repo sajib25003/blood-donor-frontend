@@ -40,9 +40,9 @@ export default function SiteFooter() {
   }, [pathname]);
 
   return (
-    <footer className="border-t border-stone-200 bg-[#faf8f5] px-4 py-6 sm:py-10 text-stone-600 sm:px-8">
+    <footer className="border-t border-stone-200 dark:border-stone-700 bg-[#faf8f5] dark:bg-[#141416] px-4 py-6 sm:py-10 text-stone-600 dark:text-stone-300 sm:px-8">
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-between gap-3 border-b border-stone-200 pb-5 sm:pb-8">
+        <div className="flex items-center justify-between gap-3 border-b border-stone-200 dark:border-stone-700 pb-5 sm:pb-8">
           <Link
             href="/"
             aria-label="Bangladeshi Blood Donors — Home"
@@ -53,7 +53,7 @@ export default function SiteFooter() {
               alt="Bangladeshi Blood Donors — Connecting people when it matters."
               width={1920}
               height={819}
-              className="h-auto w-[200px] max-w-full object-contain sm:w-[340px]"
+              className="brand-logo h-auto w-[200px] max-w-full object-contain sm:w-[340px]"
             />
           </Link>
 
@@ -62,7 +62,7 @@ export default function SiteFooter() {
               <Link
                 href="/admin/login"
                 aria-label="Admin Login"
-                className="flex h-11 w-11 items-center justify-center rounded-xl border border-stone-200 bg-white text-stone-600 shadow-sm transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] text-stone-600 dark:text-stone-300 shadow-sm transition hover:border-red-200 dark:hover:border-red-900 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-700 dark:hover:text-red-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
               >
                 <svg
                   aria-hidden="true"
@@ -102,7 +102,7 @@ export default function SiteFooter() {
               href="https://ashikhassan.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-red-700 underline decoration-red-200 underline-offset-4 transition hover:text-red-900 hover:decoration-red-700"
+              className="font-bold text-red-700 dark:text-red-300 underline decoration-red-200 underline-offset-4 transition hover:text-red-900 dark:hover:text-red-200 hover:decoration-red-700"
             >
               AHB
             </a>

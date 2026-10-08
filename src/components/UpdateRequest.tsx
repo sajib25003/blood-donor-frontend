@@ -97,8 +97,8 @@ export default function UpdateRequest({
   };
 
   return (
-    <section className="border-b border-stone-200 bg-white px-4 py-3 sm:px-8 sm:py-5">
-      <div className="mx-auto text-center max-w-7xl rounded-2xl border border-red-100 bg-red-50/70 px-3 py-3 text-xs leading-relaxed text-stone-700 sm:px-6 sm:py-4 sm:text-sm">
+    <section className="border-b border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 sm:px-8 sm:py-5">
+      <div className="mx-auto text-center max-w-7xl rounded-2xl border border-red-100 dark:border-red-900 bg-red-50/70 dark:bg-red-950/30 px-3 py-3 text-xs leading-relaxed text-stone-700 dark:text-stone-300 sm:px-6 sm:py-4 sm:text-sm">
         If you want to update your info, please leave a request{" "}
         <button
           ref={openButton}
@@ -107,7 +107,7 @@ export default function UpdateRequest({
             setError("");
             setOpen(true);
           }}
-          className="font-bold text-red-700 underline decoration-red-300 underline-offset-4 hover:text-red-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
+          className="font-bold text-red-700 dark:text-red-300 underline decoration-red-300 underline-offset-4 hover:text-red-900 dark:hover:text-red-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-700"
         >
           here
         </button>
@@ -125,17 +125,17 @@ export default function UpdateRequest({
             role="dialog"
             aria-modal="true"
             aria-labelledby="update-request-title"
-            className="max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-8"
+            className="max-h-[92dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-white dark:bg-[#202024] p-6 shadow-2xl sm:p-8"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2
                   id="update-request-title"
-                  className="text-2xl font-bold text-stone-900"
+                  className="text-2xl font-bold text-stone-900 dark:text-stone-100"
                 >
                   Update your donor info
                 </h2>
-                <p className="mt-2 text-sm text-stone-500">
+                <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
                   Tell us what is currently listed and exactly what should
                   change.
                 </p>
@@ -144,7 +144,7 @@ export default function UpdateRequest({
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="rounded-full p-2 text-stone-500 hover:bg-stone-100"
+                className="rounded-full p-2 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800"
               >
                 ✕
               </button>
@@ -152,7 +152,7 @@ export default function UpdateRequest({
 
             {referenceNo ? (
               <div
-                className="mt-7 rounded-2xl border border-green-200 bg-green-50 p-5 text-sm text-green-950"
+                className="mt-7 rounded-2xl border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/40 p-5 text-sm text-green-950 dark:text-green-100"
                 role="status"
               >
                 <p className="font-bold">Request submitted</p>
@@ -168,7 +168,7 @@ export default function UpdateRequest({
                   <div className="mt-3">
                     {showEmail ? (
                       <a
-                        className="font-semibold text-red-700 underline"
+                        className="font-semibold text-red-700 dark:text-red-300 underline"
                         href={`mailto:${supportEmail}?subject=${encodeURIComponent(`Donor update request ${referenceNo}`)}`}
                       >
                         {supportEmail}
@@ -177,7 +177,7 @@ export default function UpdateRequest({
                       <button
                         type="button"
                         onClick={() => setShowEmail(true)}
-                        className="font-semibold text-red-700 underline"
+                        className="font-semibold text-red-700 dark:text-red-300 underline"
                       >
                         Show email
                       </button>
@@ -205,7 +205,7 @@ export default function UpdateRequest({
               </div>
             ) : (
               <form onSubmit={submit} className="mt-7 space-y-4">
-                <label className="block text-sm font-semibold text-stone-700">
+                <label className="block text-sm font-semibold text-stone-700 dark:text-stone-300">
                   Your name
                   <input
                     ref={nameInput}
@@ -215,10 +215,10 @@ export default function UpdateRequest({
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     placeholder="Name in the donor directory"
-                    className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    className="mt-2 w-full rounded-xl border border-stone-200 dark:border-stone-700 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950"
                   />
                 </label>
-                <label className="block text-sm font-semibold text-stone-700">
+                <label className="block text-sm font-semibold text-stone-700 dark:text-stone-300">
                   Mobile number
                   <input
                     required
@@ -228,10 +228,10 @@ export default function UpdateRequest({
                     value={mobileNo}
                     onChange={(event) => setMobileNo(event.target.value)}
                     placeholder="01XXXXXXXXX"
-                    className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    className="mt-2 w-full rounded-xl border border-stone-200 dark:border-stone-700 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950"
                   />
                 </label>
-                <label className="block text-sm font-semibold text-stone-700">
+                <label className="block text-sm font-semibold text-stone-700 dark:text-stone-300">
                   What needs to change?
                   <textarea
                     required
@@ -240,13 +240,13 @@ export default function UpdateRequest({
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
                     placeholder="Current details, the correction you want, and any helpful context"
-                    className="mt-2 w-full resize-y rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                    className="mt-2 w-full resize-y rounded-xl border border-stone-200 dark:border-stone-700 px-4 py-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950"
                   />
                 </label>
                 {error && (
                   <p
                     role="alert"
-                    className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700"
+                    className="rounded-xl bg-red-50 dark:bg-red-950/40 px-4 py-3 text-sm text-red-700 dark:text-red-300"
                   >
                     {error}
                   </p>

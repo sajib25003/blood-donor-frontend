@@ -130,10 +130,10 @@ export default function AdminRequestsPage() {
   };
 
   if (auth === "checking") {
-    return <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] text-stone-500">Checking admin session…</main>;
+    return <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] dark:bg-[#141416] text-stone-500 dark:text-stone-400">Checking admin session…</main>;
   }
   if (auth === "error") {
-    return <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] p-6 text-center text-stone-700">Unable to contact the server. Refresh this page to try again.</main>;
+    return <main className="flex min-h-screen items-center justify-center bg-[#faf8f5] dark:bg-[#141416] p-6 text-center text-stone-700 dark:text-stone-300">Unable to contact the server. Refresh this page to try again.</main>;
   }
 
   const result = current?.result;
@@ -141,66 +141,66 @@ export default function AdminRequestsPage() {
   const meta = result?.meta;
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-stone-900">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#141416] text-stone-900 dark:text-stone-100">
       <SiteHeader />
       <main className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
-        <Link href="/admin" className="text-sm font-semibold text-red-700 hover:underline">← Manage donors</Link>
-        <p className="mt-7 text-xs font-bold uppercase tracking-[0.18em] text-red-700">Administration</p>
+        <Link href="/admin" className="text-sm font-semibold text-red-700 dark:text-red-300 hover:underline">← Manage donors</Link>
+        <p className="mt-7 text-xs font-bold uppercase tracking-[0.18em] text-red-700 dark:text-red-300">Administration</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight">Update requests</h1>
-        <p className="mt-2 text-sm text-stone-500">Review donor messages and mark completed requests as resolved.</p>
+        <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">Review donor messages and mark completed requests as resolved.</p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-white p-4 sm:p-5">
-          <label className="text-sm font-medium text-stone-700">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] p-4 sm:p-5">
+          <label className="text-sm font-medium text-stone-700 dark:text-stone-300">
             Status
             <select
               value={status}
               onChange={(event) => { setStatus(event.target.value as RequestStatus | ""); setPage(1); }}
-              className="ml-3 rounded-xl border border-stone-200 bg-white px-3 py-2.5 outline-none focus:border-red-500"
+              className="ml-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-3 py-2.5 outline-none focus:border-red-500"
             >
               <option value="">All requests</option>
               <option value="pending">Pending</option>
               <option value="resolved">Resolved</option>
             </select>
           </label>
-          <label className="text-sm font-medium text-stone-700">
+          <label className="text-sm font-medium text-stone-700 dark:text-stone-300">
             Per page
             <select
               value={limit}
               onChange={(event) => { setLimit(Number(event.target.value)); setPage(1); }}
-              className="ml-3 rounded-xl border border-stone-200 bg-white px-3 py-2.5 outline-none focus:border-red-500"
+              className="ml-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-3 py-2.5 outline-none focus:border-red-500"
             >
               {[10, 20, 50, 100].map((size) => <option key={size} value={size}>{size}</option>)}
             </select>
           </label>
         </div>
 
-        {actionError && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-700">{actionError}</p>}
-        {current?.error && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-sm text-red-700">{current.error}</p>}
-        {!current && <p role="status" className="mt-8 text-center text-stone-500">Loading requests…</p>}
+        {actionError && <p role="alert" className="mt-5 rounded-xl bg-red-50 dark:bg-red-950/40 p-4 text-sm text-red-700 dark:text-red-300">{actionError}</p>}
+        {current?.error && <p role="alert" className="mt-5 rounded-xl bg-red-50 dark:bg-red-950/40 p-4 text-sm text-red-700 dark:text-red-300">{current.error}</p>}
+        {!current && <p role="status" className="mt-8 text-center text-stone-500 dark:text-stone-400">Loading requests…</p>}
         {result && (
           <>
-            <p className="mt-6 text-sm text-stone-500">{meta?.total ?? 0} requests found</p>
+            <p className="mt-6 text-sm text-stone-500 dark:text-stone-400">{meta?.total ?? 0} requests found</p>
             {requests.length === 0 ? (
-              <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-10 text-center text-stone-500">No requests found.</div>
+              <div className="mt-4 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] p-10 text-center text-stone-500 dark:text-stone-400">No requests found.</div>
             ) : (
               <div className="mt-4 space-y-4">
                 {requests.map((request) => (
-                  <article key={request._id} className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+                  <article key={request._id} className="rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] p-5 shadow-sm sm:p-6">
                     <div className="flex flex-wrap items-start justify-between gap-3">
                       <div>
                         <h2 className="text-lg font-bold">{request.name}</h2>
-                        <p className="mt-1 text-sm text-stone-500">{request.mobileNo} · {formatDate(request.createdAt)}</p>
+                        <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{request.mobileNo} · {formatDate(request.createdAt)}</p>
                       </div>
-                      <span className={`rounded-full px-3 py-1 text-xs font-bold capitalize ${request.status === "pending" ? "bg-amber-100 text-amber-800" : "bg-green-100 text-green-800"}`}>{request.status}</span>
+                      <span className={`rounded-full px-3 py-1 text-xs font-bold capitalize ${request.status === "pending" ? "bg-amber-100 text-amber-800" : "bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200"}`}>{request.status}</span>
                     </div>
-                    <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-6 text-stone-700">{request.message}</p>
+                    <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-6 text-stone-700 dark:text-stone-300">{request.message}</p>
                     <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-stone-100 pt-4">
-                      <span className="select-all font-mono text-xs font-semibold text-stone-600">Ref: {request.referenceNo}</span>
+                      <span className="select-all font-mono text-xs font-semibold text-stone-600 dark:text-stone-300">Ref: {request.referenceNo}</span>
                       <button
                         type="button"
                         disabled={savingId !== null}
                         onClick={() => changeStatus(request)}
-                        className="rounded-lg border border-red-200 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-50 disabled:opacity-50"
+                        className="rounded-lg border border-red-200 dark:border-red-900 px-4 py-2 text-sm font-semibold text-red-700 dark:text-red-300 hover:bg-red-50 dark:hover:bg-red-950/40 disabled:opacity-50"
                       >
                         {savingId === request._id ? "Saving…" : request.status === "pending" ? "Mark resolved" : "Reopen"}
                       </button>
@@ -211,9 +211,9 @@ export default function AdminRequestsPage() {
             )}
             {(meta?.totalPages ?? 0) > 1 && (
               <nav aria-label="Request pages" className="mt-7 flex items-center justify-center gap-4">
-                <button type="button" disabled={page <= 1} onClick={() => setPage(page - 1)} className="rounded-lg border border-stone-300 px-4 py-2 text-sm disabled:opacity-40">Previous</button>
+                <button type="button" disabled={page <= 1} onClick={() => setPage(page - 1)} className="rounded-lg border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm disabled:opacity-40">Previous</button>
                 <span className="text-sm">Page {page} of {meta?.totalPages}</span>
-                <button type="button" disabled={page >= (meta?.totalPages ?? 0)} onClick={() => setPage(page + 1)} className="rounded-lg border border-stone-300 px-4 py-2 text-sm disabled:opacity-40">Next</button>
+                <button type="button" disabled={page >= (meta?.totalPages ?? 0)} onClick={() => setPage(page + 1)} className="rounded-lg border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm disabled:opacity-40">Next</button>
               </nav>
             )}
           </>

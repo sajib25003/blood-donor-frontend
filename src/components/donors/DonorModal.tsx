@@ -94,8 +94,8 @@ export default function DonorModal({
   };
 
   const inputClass =
-    "mt-2 w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-red-500 focus:ring-2 focus:ring-red-100";
-  const labelClass = "text-sm font-semibold text-stone-700";
+    "mt-2 w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 text-sm text-stone-900 dark:text-stone-100 outline-none transition placeholder:text-stone-400 dark:placeholder:text-stone-500 focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950";
+  const labelClass = "text-sm font-semibold text-stone-700 dark:text-stone-300";
 
   return (
     <div
@@ -108,20 +108,20 @@ export default function DonorModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="donor-form-title"
-        className="max-h-[92dvh] w-full max-w-xl overflow-y-auto overscroll-contain rounded-3xl bg-[#fffdfb] p-6 shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:p-8"
+        className="max-h-[92dvh] w-full max-w-xl overflow-y-auto overscroll-contain rounded-3xl bg-[#fffdfb] dark:bg-[#202024] p-6 shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:p-8"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600 dark:text-red-400">
               Join the directory
             </p>
             <h2
               id="donor-form-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-stone-900"
+              className="mt-2 text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100"
             >
               Register as a donor
             </h2>
-            <p className="mt-1 text-sm text-stone-500">
+            <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">
               Your details can help someone find blood in time.
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function DonorModal({
             type="button"
             onClick={onClose}
             aria-label="Close form"
-            className="rounded-full p-2 text-stone-500 hover:bg-stone-100 hover:text-stone-900"
+            className="rounded-full p-2 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-stone-900 dark:hover:text-stone-100"
           >
             ✕
           </button>
@@ -218,7 +218,7 @@ export default function DonorModal({
               placeholder="e.g. Mirpur, Dhaka"
             />
           </label>
-          <p className="text-xs leading-relaxed text-stone-500 sm:col-span-2">
+          <p className="text-xs leading-relaxed text-stone-500 dark:text-stone-400 sm:col-span-2">
             By registering, your name, age, sex, blood group, location and
             mobile number will be visible to visitors. Your full date of birth
             will not appear in the public list.
@@ -226,7 +226,7 @@ export default function DonorModal({
           {error && (
             <p
               role="alert"
-              className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700 sm:col-span-2"
+              className="rounded-xl bg-red-50 dark:bg-red-950/40 px-4 py-3 text-sm text-red-700 dark:text-red-300 sm:col-span-2"
             >
               {error}
             </p>

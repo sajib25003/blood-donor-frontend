@@ -177,7 +177,7 @@ export default function HomePage() {
     !isSearching && !error && page > (currentList?.page ?? 0);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-stone-900">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#141416] text-stone-900 dark:text-stone-100">
       <SiteHeader onBecomeDonor={() => setShowForm(true)} />
 
       <main>
@@ -204,7 +204,7 @@ export default function HomePage() {
             <div className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
               <a
                 href="#find-donors"
-                className="rounded-xl bg-white px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base font-bold text-red-800 transition hover:bg-red-50"
+                className="rounded-xl bg-white dark:bg-[#202024] px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base font-bold text-red-800 dark:text-red-200 transition hover:bg-red-50 dark:hover:bg-red-950/40"
               >
                 Find a donor
               </a>
@@ -236,7 +236,7 @@ export default function HomePage() {
         >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700 dark:text-red-300">
                 Donor directory
               </p>
 
@@ -245,18 +245,18 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <p className="text-sm text-stone-500">
+            <p className="text-sm text-stone-500 dark:text-stone-400">
               {isSearching
                 ? "Searching…"
                 : `${meta.total} ${meta.total === 1 ? "result" : "results"}`}
             </p>
           </div>
 
-          <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-stone-200 bg-white p-3 sm:mt-6 shadow-sm sm:flex-row sm:items-center sm:p-5">
+          <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] p-3 sm:mt-6 shadow-sm sm:flex-row sm:items-center sm:p-5">
             <label className="relative flex-1">
               <span className="sr-only">Search by name or mobile number</span>
 
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500">
                 <SearchIcon />
               </span>
 
@@ -265,7 +265,7 @@ export default function HomePage() {
                 value={search}
                 onChange={(event) => changeSearch(event.target.value)}
                 placeholder="Search name or mobile number"
-                className="w-full rounded-xl border border-stone-200 py-3 pl-12 pr-4 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                className="w-full rounded-xl border border-stone-200 dark:border-stone-700 py-3 pl-12 pr-4 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950"
               />
             </label>
 
@@ -277,7 +277,7 @@ export default function HomePage() {
                 onChange={(event) =>
                   chooseGroup(event.target.value as BloodGroup | "")
                 }
-                className="w-full rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100"
+                className="w-full rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] px-4 py-3 text-sm outline-none focus:border-red-500 focus:ring-2 focus:ring-red-100 dark:focus:ring-red-950"
               >
                 <option value="">All blood groups</option>
 
@@ -295,7 +295,7 @@ export default function HomePage() {
                   chooseGroup("");
                   changeSearch("");
                 }}
-                className="px-3 py-2 text-sm font-semibold text-red-700 hover:underline"
+                className="px-3 py-2 text-sm font-semibold text-red-700 dark:text-red-300 hover:underline"
               >
                 Clear filters
               </button>
@@ -305,7 +305,7 @@ export default function HomePage() {
           {notice && (
             <div
               role="status"
-              className="mt-5 flex items-center justify-between rounded-xl bg-green-50 px-5 py-4 text-sm text-green-800"
+              className="mt-5 flex items-center justify-between rounded-xl bg-green-50 dark:bg-green-950/40 px-5 py-4 text-sm text-green-800 dark:text-green-200"
             >
               <span>{notice}</span>
 
@@ -318,7 +318,7 @@ export default function HomePage() {
           {error && (
             <div
               role="alert"
-              className="mt-6 rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-800"
+              className="mt-6 rounded-xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 p-5 text-sm text-red-800 dark:text-red-200"
             >
               {error}{" "}
               <button
@@ -344,16 +344,16 @@ export default function HomePage() {
           )}
 
           {!isSearching && !error && donors.length === 0 && (
-            <div className="mt-6 rounded-2xl border border-dashed border-stone-300 bg-white px-5 py-10 text-center sm:p-14">
+            <div className="mt-6 rounded-2xl border border-dashed border-stone-300 dark:border-stone-600 bg-white dark:bg-[#202024] px-5 py-10 text-center sm:p-14">
               <span
                 aria-hidden="true"
-                className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-700"
+                className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300"
               >
                 <SearchIcon />
               </span>
               <p className="text-xl font-bold">No donors found</p>
 
-              <p className="mt-2 text-sm text-stone-500">
+              <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
                 Try another name, mobile number or blood group.
               </p>
               <button
@@ -393,12 +393,12 @@ export default function HomePage() {
                   type="button"
                   disabled={isLoadingMore || Boolean(error)}
                   onClick={() => setPage((value) => value + 1)}
-                  className="rounded-xl border border-stone-300 px-4 py-2 text-sm font-semibold transition hover:border-red-300 hover:bg-red-50 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="rounded-xl border border-stone-300 dark:border-stone-600 px-4 py-2 text-sm font-semibold transition hover:border-red-300 dark:hover:border-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-700 dark:hover:text-red-300 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {isLoadingMore ? "Loading…" : "View more"}
                 </button>
               ) : (
-                <p className="text-sm text-stone-500" role="status">
+                <p className="text-sm text-stone-500 dark:text-stone-400" role="status">
                   End of list. {meta.total}{" "}
                   {meta.total === 1 ? "donor" : "donors"} found.
                 </p>

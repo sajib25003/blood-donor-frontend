@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "./ThemeToggle";
 import { usePathname } from "next/navigation";
 
 const API = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/$/, "");
@@ -77,8 +78,8 @@ export default function SiteHeader({
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-stone-200 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:gap-3 sm:py-4 sm:px-8">
+    <header className="sticky top-0 z-40 border-b border-stone-200 dark:border-stone-700 bg-white dark:bg-[#202024] shadow-sm">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:py-2.5 sm:px-8">
         <Link
           href="/"
           aria-label="Bangladeshi Blood Donors — Home"
@@ -90,11 +91,12 @@ export default function SiteHeader({
             width={1920}
             height={819}
             priority
-            className="h-auto w-[130px] object-contain sm:w-[210px]"
+            className="brand-logo h-auto w-[130px] object-contain sm:w-[210px]"
           />
         </Link>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           {onBecomeDonor && (
             <button
               type="button"
@@ -109,7 +111,7 @@ export default function SiteHeader({
             <Link
               href="/admin"
               aria-current={pathname === "/admin" ? "page" : undefined}
-              className="rounded-xl border border-red-200 bg-red-50 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold text-red-700 transition hover:bg-red-100 sm:px-4"
+              className="rounded-xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/40 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold text-red-700 dark:text-red-300 transition hover:bg-red-100 dark:hover:bg-red-950/60 sm:px-4"
             >
               Admin
             </Link>
@@ -120,7 +122,7 @@ export default function SiteHeader({
               type="button"
               onClick={signOut}
               disabled={signingOut}
-              className="rounded-xl border border-stone-300 hover:cursor-pointer hover:bg-stone-200 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold transition disabled:opacity-60 sm:px-4"
+              className="rounded-xl border border-stone-300 dark:border-stone-600 hover:cursor-pointer hover:bg-stone-200 dark:hover:bg-stone-700 px-2.5 py-2 text-xs sm:py-2.5 sm:text-sm font-semibold transition disabled:opacity-60 sm:px-4"
             >
               {signingOut ? "Signing out…" : "Sign out"}
             </button>
